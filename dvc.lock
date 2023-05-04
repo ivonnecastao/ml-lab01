@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python code/0_download.py
+    deps:
+    - path: code/0_download.py
+      md5: 652a91294367fe4aa8bd8221a64215c3
+      size: 661
+    - path: https://calcofi.org/downloads/database/CalCOFI_Database_194903-202001_csv_22Sep2021.zip
+      checksum: '"1ff3aab-5d825ae6816c0"'
+      size: 33503915
+    outs:
+    - path: data/downloaded
+      md5: 7445efb2e8306a25f9d1ab2c631aa111.dir
+      size: 174137006
+      nfiles: 1
+  prepare:
+    cmd: python code/1_prepare.py
+    deps:
+    - path: code/1_prepare.py
+      md5: 096bd02efd9d2953535943935ffaf564
+      size: 642
+    - path: data/downloaded
+      md5: 7445efb2e8306a25f9d1ab2c631aa111.dir
+      size: 174137006
+      nfiles: 1
+    outs:
+    - path: data/prepared
+      md5: 3064209c50e32538d21da470b0d2ac29.dir
+      size: 10260987
+      nfiles: 2
+  train:
+    cmd: python code/2_train.py
+    deps:
+    - path: code/2_train.py
+      md5: d220f5e7b82fb2ea450f7772070b8494
+      size: 1350
+    - path: data/prepared
+      md5: 3064209c50e32538d21da470b0d2ac29.dir
+      size: 10260987
+      nfiles: 2
+    outs:
+    - path: model
+      md5: 2b56a67ed4908d3a652fbcc889d9e569.dir
+      size: 66294
+      nfiles: 2

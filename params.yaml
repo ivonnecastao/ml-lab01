@@ -1,0 +1,4 @@
+learning_rate: 0.001
+ptrain: 0.8
+pvld: 0.1
+ptst: 0.1

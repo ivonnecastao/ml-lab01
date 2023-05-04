@@ -1,0 +1,25 @@
+stages:
+  download:
+    cmd: python code/0_download.py
+    deps:
+      - code/0_download.py
+      - https://calcofi.org/downloads/database/CalCOFI_Database_194903-202001_csv_22Sep2021.zip
+    outs:
+      - data/downloaded
+  prepare:
+    cmd: python code/1_prepare.py
+    deps:
+      - code/1_prepare.py
+      - data/downloaded
+    outs:
+      - data/prepared
+  train: 
+    cmd: python code/2_train.py
+    deps:
+      - code/2_train.py
+      - data/prepared
+    outs:
+      - model
+plots:
+  - data/prepared/TempSal.png
+  - data/model/TempSal.png
