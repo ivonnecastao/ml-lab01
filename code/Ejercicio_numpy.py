@@ -3,14 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv('data\downloaded\winequality-white.csv', sep=";")
-
-
+print(df)
 print(df.shape) # me dice las dimensiones del dataframe
 
-mnp = df.to_numpy(dtype = 'float', copy = False)  # me convierte el df en una matriz de numpy (mnp)
+df = df.dropna()
+print(df)
 
+mnp = df.to_numpy()  # me convierte el df en una matriz de numpy (mnp)
 print(mnp)
-
 print(mnp.shape)  # me dice las dimensiones de la mnp
 
 i = 11 # columna que queremos obtener
@@ -23,7 +23,6 @@ print(y)
 print(y.shape)
 
 mnp = np.delete(mnp, 11, axis=1) # Elimino la columna que extraje en y
-
 print(mnp)
 print(mnp.shape)
 
@@ -44,16 +43,16 @@ print(y_pred)
 print(y_pred.shape)
 
 
-#"""
+"""
 # plot data
-#plt.scatter(mnp, y, label='Datos')
-plt.plot(mnp, y_pred, color='red', label='Ajuste lineal') 
-plt.xlabel('Variables independiente (x)')
+plt.scatter(y, y_pred, label='Datos')
+#plt.plot(y, y_pred, color='red', label='Ajuste lineal') 
+plt.xlabel('Variables independiente (mnp)')
 plt.ylabel('Variable dependiente (y)')
 plt.legend()
 plt.title('Regresión Lineal con Numpy')
 plt.show()
-plt.savefig('plots\regresionlineal.png')
-#"""
+plt.savefig('plots\y_vs_y_pred_numpy.png')
+"""
 
 
