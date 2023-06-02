@@ -23,7 +23,10 @@ def binary_cross_entropy(y, y_hat):
     return loss
 
 def binary_cross_entropy_derivative(y, y_hat):
-    return (y_hat - y) / (y_hat * (1 - y_hat))
+    y = y.reshape(-1,1)
+    m = y.shape[0]
+    bce_grad = -1 / m * (y / y_hat - (1 - y) / (1 - y_hat))
+    return bce_grad
 
 
 # Hiperparámetros
@@ -53,30 +56,25 @@ for epoch in range(num_epochs):
     z2 = np.dot(a1, W2) + b2
     y_hat = sigmoid(z2)  # g(2)(z2)
 
+    # Calcular pérdida con Función de pérdida Binary_cross_entropy
 
-# Calcular pérdida con Función de pérdida Binary_cross_entropy
+    loss = binary_cross_entropy(y_train, y_hat)
+    print(f"Epoch: {epoch},  Loss: {loss}")
 
-loss = binary_cross_entropy(y_train, y_hat)
-print(f"Epoch: {epoch},  Loss: {loss}")
+    # Propagar el error hacia atrás: Back Propagation
 
+    delta_y_hat = binary_cross_entropy_derivative(y_train, y_hat)
+    delta_z2 = delta_y_hat * sigmoid_derivate(y_hat)
+    delta_W2 = np.dot(a1.T, delta_z2)
+    delta_b2 = np.sum(delta_z2, axis=0)                # Porque es el vector de 1's multiplicado por delta_z2, da el mismo delta_z2
+    delta_a1 = np.dot(delta_z2, W2.T)
+    delta_z1 = delta_a1 * sigmoid_derivate(a1)
+    delta_W1 = np.dot(x_train.T, delta_z1)
+    delta_b1 = np.sum(delta_z1, axis=0)
 
-# Propagar el error hacia atrás: Back Propagation
+    # Actualizar pesos y bias
 
-delta_y_hat = binary_cross_entropy_derivative(y_train, y_hat)
-delta_z2 = delta_y_hat * sigmoid_derivate(y_hat)
-delta_W2 = np.dot(a1.T, delta_z2)
-delta_b2 = np.sum(delta_z2, axis=0)                # Porque es el vector de 1's multiplicado por delta_z2, da el mismo delta_z2
-print(delta_z2.shape)
-delta_a1 = np.dot(delta_z2, W2.T)
-delta_z1 = delta_a1 * sigmoid_derivate(a1)
-delta_W1 = np.dot(x_train.T, delta_z1)
-delta_b1 = np.sum(delta_z1, axis=0)
-
-
-# Actualizar pesos y bias
-
-W2 = W2 - lr * delta_W2  # El menos es porque vamos en el sentido contrario del gradiente
-b2 = b2 - lr * delta_b2
-W1 = W1 - lr * delta_W1 
-b1 = b1 - lr * delta_b1
-
+    W2 = W2 - lr * delta_W2  # El menos es porque vamos en el sentido contrario del gradiente
+    b2 = b2 - lr * delta_b2
+    W1 = W1 - lr * delta_W1 
+    b1 = b1 - lr * delta_b1
