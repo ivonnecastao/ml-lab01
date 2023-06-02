@@ -1,11 +1,33 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.datasets import make_moons
 from sklearn.model_selection import train_test_split
 
-# Datos sintéticos
+
+# Crear base para las figuras
+
+fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+# Generación de datos sintéticos
 
 x,y = datasets.make_moons(n_samples=1000, noise=0.2, random_state=42)
+
+"""
+ax = axes[0]
+ax.scatter(x[:, 0], x[:, 1], c=y, cmap=plt.cm.coolwarm)
+ax.set_title("Moons")
+ax.set_xlabel("$X$")
+ax.set_ylabel("$Y$")
+ax.set_aspect('equal', 'box')
+ax.set_xlim(-1.6, 2.6)
+ax.set_ylim(-1.6, 2.6)
+plt.show()
+"""
+
+
+# Preparación de Datos
+
 x_train,x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 
@@ -32,10 +54,10 @@ def binary_cross_entropy_derivative(y, y_hat):
 # Hiperparámetros
 
 input_size = 2   # Tamaño de la capa de entrada
-hidden_size = 3  # Tamaño de la capa oculta
+hidden_size = 5  # Tamaño de la capa oculta
 output_size = 1  # Tamaño de la capa de salida
 lr = 0.01        # Tasa de aprendizaje
-num_epochs = 1000
+num_epochs = 1500
 
 
 # Pesos
@@ -78,3 +100,16 @@ for epoch in range(num_epochs):
     b2 = b2 - lr * delta_b2
     W1 = W1 - lr * delta_W1 
     b1 = b1 - lr * delta_b1
+
+
+# Graficar
+
+ax = axes[0]
+ax.scatter(x_train[:, 0], x_train[:, 1], c=y_hat, cmap=plt.cm.coolwarm)
+ax.set_title("Moons")
+ax.set_xlabel("$X$")
+ax.set_ylabel("$Y$")
+ax.set_aspect('equal', 'box')
+ax.set_xlim(-1.6, 2.6)
+ax.set_ylim(-1.6, 2.6)
+plt.show()
