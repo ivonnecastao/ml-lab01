@@ -18,7 +18,7 @@ X_poly = np.hstack((np.ones((x.shape[0], 1)), X_poly))
 start_time = time.time();
 
 # Ajuste del modelo
-#theta = np.linalg.inv(X_poly.T @ X_poly) @ X_poly.T @ y
+theta = np.linalg.inv(X_poly.T @ X_poly) @ X_poly.T @ y
 
 stop_time = time.time()
 

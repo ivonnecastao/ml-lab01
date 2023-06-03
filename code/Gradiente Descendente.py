@@ -13,7 +13,7 @@ def gradiente(x):
 x = 3
 
 # Tasa de aprendizaje
-tasa_aprendizaje = 0.1  #Contrae el gradiente
+tasa_aprendizaje = 0.2  #Contrae el gradiente
 
 # Preparación de datos para la gráfica - ESto es sólo para el ejemplo, normalmente no es viable
 x_values = np.linspace(-3, 3, 100)

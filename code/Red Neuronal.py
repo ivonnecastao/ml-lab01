@@ -5,15 +5,12 @@ from sklearn.datasets import make_moons
 from sklearn.model_selection import train_test_split
 
 
-# Crear base para las figuras
-
-fig, axes = plt.subplots(1, 2, figsize=(18, 6))
-
 # Generación de datos sintéticos
 
 x,y = datasets.make_moons(n_samples=1000, noise=0.2, random_state=42)
 
-"""
+#"""
+fig, axes = plt.subplots(1, 2, figsize=(18, 6))
 ax = axes[0]
 ax.scatter(x[:, 0], x[:, 1], c=y, cmap=plt.cm.coolwarm)
 ax.set_title("Moons")
@@ -23,7 +20,8 @@ ax.set_aspect('equal', 'box')
 ax.set_xlim(-1.6, 2.6)
 ax.set_ylim(-1.6, 2.6)
 plt.show()
-"""
+plt.clf()
+#"""
 
 
 # Preparación de Datos
@@ -57,7 +55,7 @@ input_size = 2   # Tamaño de la capa de entrada
 hidden_size = 5  # Tamaño de la capa oculta
 output_size = 1  # Tamaño de la capa de salida
 lr = 0.01        # Tasa de aprendizaje
-num_epochs = 1500
+num_epochs = 600
 
 
 # Pesos
@@ -104,6 +102,7 @@ for epoch in range(num_epochs):
 
 # Graficar
 
+fig, axes = plt.subplots(1, 2, figsize=(18, 6))
 ax = axes[0]
 ax.scatter(x_train[:, 0], x_train[:, 1], c=y_hat, cmap=plt.cm.coolwarm)
 ax.set_title("Moons")
