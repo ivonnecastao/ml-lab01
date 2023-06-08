@@ -1,0 +1,196 @@
+ETAPA DE ENTRENAMIENTO DEL MODELO:
+Epoch: 0, loss: 1.661332468851576
+Epoch: 10000, loss: 0.6822609544314432
+Epoch: 20000, loss: 0.6798860977092757
+Epoch: 30000, loss: 0.6776893921720275
+Epoch: 40000, loss: 0.6754945253719301
+Epoch: 50000, loss: 0.6732937726356104
+Epoch: 60000, loss: 0.6710814637445308
+Epoch: 70000, loss: 0.668852284575881
+Epoch: 80000, loss: 0.6666012057027267
+Epoch: 90000, loss: 0.6643234412260892
+Epoch: 100000, loss: 0.6620144138551805
+Epoch: 110000, loss: 0.6596697245773475
+Epoch: 120000, loss: 0.657285126551972
+Epoch: 130000, loss: 0.6548565031540545
+Epoch: 140000, loss: 0.6523798502522032
+Epoch: 150000, loss: 0.6498512629190097
+Epoch: 160000, loss: 0.6472669268455992
+Epoch: 170000, loss: 0.6446231147638548
+Epoch: 180000, loss: 0.6419161881674542
+Epoch: 190000, loss: 0.6391426045668875
+Epoch: 200000, loss: 0.6362989304175297
+Epoch: 210000, loss: 0.6333818597292833
+Epoch: 220000, loss: 0.6303882382079785
+Epoch: 230000, loss: 0.6273150925983337
+Epoch: 240000, loss: 0.6241596646991286
+Epoch: 250000, loss: 0.6209194493038183
+Epoch: 260000, loss: 0.6175922350832215
+Epoch: 270000, loss: 0.6141761471723137
+Epoch: 280000, loss: 0.6106696899582433
+Epoch: 290000, loss: 0.6070717883097957
+Epoch: 300000, loss: 0.60338182527033
+Epoch: 310000, loss: 0.5995996740974378
+Epoch: 320000, loss: 0.595725722517585
+Epoch: 330000, loss: 0.5917608872108814
+Epoch: 340000, loss: 0.5877066168713379
+Epoch: 350000, loss: 0.583564882698159
+Epoch: 360000, loss: 0.579338155832314
+Epoch: 370000, loss: 0.5750293720033065
+Epoch: 380000, loss: 0.5706418844204387
+Epoch: 390000, loss: 0.5661794066531012
+Epoch: 400000, loss: 0.5616459478256546
+Epoch: 410000, loss: 0.557045742852455
+Epoch: 420000, loss: 0.5523831806298001
+Epoch: 430000, loss: 0.5476627330817525
+Epoch: 440000, loss: 0.5428888877458672
+Epoch: 450000, loss: 0.5380660862190608
+Epoch: 460000, loss: 0.5331986703086137
+Epoch: 470000, loss: 0.5282908371963341
+Epoch: 480000, loss: 0.5233466043700545
+Epoch: 490000, loss: 0.5183697845441166
+Epoch: 500000, loss: 0.5133639703093292
+Epoch: 510000, loss: 0.5083325278443324
+Epoch: 520000, loss: 0.503278598697506
+Epoch: 530000, loss: 0.49820510841747245
+Epoch: 540000, loss: 0.49311478067063474
+Epoch: 550000, loss: 0.48801015543097503
+Epoch: 560000, loss: 0.48289360985133345
+Epoch: 570000, loss: 0.4777673805145819
+Epoch: 580000, loss: 0.47263358590342275
+Epoch: 590000, loss: 0.46749424810399054
+Epoch: 600000, loss: 0.46235131295603404
+Epoch: 610000, loss: 0.4572066680670197
+Epoch: 620000, loss: 0.45206215830671576
+Epoch: 630000, loss: 0.4469195985823623
+Epoch: 640000, loss: 0.4417807838549883
+Epoch: 650000, loss: 0.43664749648984724
+Epoch: 660000, loss: 0.43152151113615517
+Epoch: 670000, loss: 0.4264045974033593
+Epoch: 680000, loss: 0.4212985206450812
+Epoch: 690000, loss: 0.4162050411809606
+Epoch: 700000, loss: 0.4111259122851788
+Epoch: 710000, loss: 0.4060628772529909
+Epoch: 720000, loss: 0.40101766582791254
+Epoch: 730000, loss: 0.39599199023637743
+Epoch: 740000, loss: 0.39098754103757716
+Epoch: 750000, loss: 0.3860059829567525
+Epoch: 760000, loss: 0.381048950832751
+Epoch: 770000, loss: 0.3761180457768185
+Epoch: 780000, loss: 0.3712148316101962
+Epoch: 790000, loss: 0.3663408316237294
+Epoch: 800000, loss: 0.3614975256831307
+Epoch: 810000, loss: 0.35668634768864016
+Epoch: 820000, loss: 0.351908683386914
+Epoch: 830000, loss: 0.34716586852549836
+Epoch: 840000, loss: 0.34245918733548897
+Epoch: 850000, loss: 0.33778987132527316
+Epoch: 860000, loss: 0.3331590983670712
+Epoch: 870000, loss: 0.3285679920577605
+Epoch: 880000, loss: 0.32401762133581996
+Epoch: 890000, loss: 0.3195090003368528
+Epoch: 900000, loss: 0.3150430884708017
+Epoch: 910000, loss: 0.3106207907045462
+Epoch: 920000, loss: 0.30624295803397983
+Epoch: 930000, loss: 0.3019103881298422
+Epoch: 940000, loss: 0.29762382614167143
+Epoch: 950000, loss: 0.29338396564407776
+Epoch: 960000, loss: 0.28919144970939653
+Epoch: 970000, loss: 0.28504687209053775
+Epoch: 980000, loss: 0.28095077849767097
+Epoch: 990000, loss: 0.2769036679522719
+
+Matriz de Confusión - Entrenamiento ->
+TOTAL: Instancias 160 / Instancias Verdaderas: 155 / Instancias Falsas: 5
+VN: 84   FP: 1
+FN: 4   VP: 71
+Métricas Entrenamiento ->
+Balanceo de Dataset: N 85.00 =~ P 75.00
+Training Accuracy: 96.88% de las predicciones son verdaderas
+Training Precision: 98.61% de las instancias clasificadas como positivas son correctas (En la predicción)
+Training Recall: 94.67% de las instancias que realmente son positivas son correctas (En el Dataset)
+Training F1 Score: 0.97 / 1 en Precisión y Exhaustividad
+Umbral: 0.1 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 96 / Instancias Falsas: 64
+VN: 21   FP: 64
+FN: 0   VP: 75
+Umbral: 0.2 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 126 / Instancias Falsas: 34
+VN: 51   FP: 34
+FN: 0   VP: 75
+Umbral: 0.3 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 146 / Instancias Falsas: 14
+VN: 71   FP: 14
+FN: 0   VP: 75
+Umbral: 0.4 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 153 / Instancias Falsas: 7
+VN: 79   FP: 6
+FN: 1   VP: 74
+Umbral: 0.5 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 155 / Instancias Falsas: 5
+VN: 84   FP: 1
+FN: 4   VP: 71
+Umbral: 0.6 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 145 / Instancias Falsas: 15
+VN: 84   FP: 1
+FN: 14   VP: 61
+Umbral: 0.7 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 134 / Instancias Falsas: 26
+VN: 85   FP: 0
+FN: 26   VP: 49
+Umbral: 0.8 ->:
+TOTAL: Instancias 160 / Instancias Verdaderas: 114 / Instancias Falsas: 46
+VN: 85   FP: 0
+FN: 46   VP: 29
+Umbral: 0.9 ->: 
+TOTAL: Instancias 160 / Instancias Verdaderas: 91 / Instancias Falsas: 69
+VN: 85   FP: 0
+FN: 69   VP: 6
+
+
+ETAPA DE EVALUACIÓN DEL MODELO:
+Matriz de Confusión - Evaluación ->
+TOTAL: Instancias 40 / Instancias Verdaderas: 38 / Instancias Falsas: 2
+VN: 15   FP: 0
+FN: 2   VP: 23
+Métricas Evaluación ->
+Balanceo de Dataset: N 15.00 =~ P 25.00
+Test Accuracy: 95.00% de las instancias evaluadas son verdaderas
+Test Precision: 100.00% de las instancias clasificadas como positivas son correctas (En el test)
+Test Recall: 92.00% de las instancias que realmente son positivas son correctas (En el Dataset)
+Test F1 Score: 0.96 / 1 en Precisión y Exhaustividad
+Umbral: 0.1 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 26 / Instancias Falsas: 14
+VN: 1   FP: 14
+FN: 0   VP: 25
+Umbral: 0.2 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 32 / Instancias Falsas: 8
+VN: 7   FP: 8
+FN: 0   VP: 25
+Umbral: 0.3 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 36 / Instancias Falsas: 4
+VN: 11   FP: 4
+FN: 0   VP: 25
+Umbral: 0.4 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 38 / Instancias Falsas: 2
+VN: 14   FP: 1
+FN: 1   VP: 24
+Umbral: 0.5 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 38 / Instancias Falsas: 2
+VN: 15   FP: 0
+FN: 2   VP: 23
+Umbral: 0.6 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 33 / Instancias Falsas: 7
+VN: 15   FP: 0
+FN: 7   VP: 18
+Umbral: 0.7 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 26 / Instancias Falsas: 14
+FN: 14   VP: 11
+Umbral: 0.8 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 19 / Instancias Falsas: 21
+VN: 15   FP: 0
+FN: 21   VP: 4
+Umbral: 0.9 ->:
+TOTAL: Instancias 40 / Instancias Verdaderas: 15 / Instancias Falsas: 25
+VN: 15   FP: 0
+FN: 25   VP: 0
