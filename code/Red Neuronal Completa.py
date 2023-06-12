@@ -3,6 +3,7 @@ from sklearn.datasets import make_circles
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import json
+from pathlib import Path
 
 #-------------------------------------------------------------------------------------------
 # FUNCIONES GENERALES
@@ -152,7 +153,7 @@ def curvas_roc_pr(y_pred, y, etapa):
     plt.show()
     
     
-def mejor_modelo(archivo_pesos):
+def encontrar_mejor_modelo(archivo_pesos):
     
     # Cargar archivo
     with open(archivo_pesos, 'r') as archivo:
@@ -206,6 +207,12 @@ def guardar_modelo(epoch, W1, W2, loss):
             'loss' : loss
         }
 
+        # Borrar archivo existente
+        ruta_archivo = Path(archivo_modelo)
+
+        if ruta_archivo.exists():
+            ruta_archivo.unlink()
+        
         # Guardar el diccionario en un archivo JSON
         with open(archivo_modelo, 'w') as archivo:
             json.dump([modelo], archivo)
@@ -224,6 +231,15 @@ class SimpleNN:
         
 
     def iniciar_archivo_pesos(self, archivo_pesos, epoch, loss):
+        
+        #Inicializa el archivo en donde se guardarán los modelos por epoch, con los pesos iniciales.
+        
+        # Borrar archivo existente
+        ruta_archivo = Path(archivo_pesos)
+
+        if ruta_archivo.exists():
+            ruta_archivo.unlink()
+             
         # Convertir self.W1 y self.W2 en listas
         W1_lista = self.W1.tolist()
         W2_lista = self.W2.tolist()
@@ -303,7 +319,7 @@ class SimpleNN:
         
     def train(self, X, y, epochs, lr, archivo):
         
-        mem = np.zeros((int(epochs/10000), 2)) # Almacena el histórico de loss x epochs
+        mem = np.zeros((int(epochs/10000), 2)) # Matriz para almacenar el histórico de loss x epochs
         i = 0
         y = y.reshape(-1, 1)
 
@@ -346,7 +362,7 @@ class SimpleNN:
                 plt.title(f"Entrenamiento de Clasificación en Epoch {epoch}")
                 plt.contourf(xx, yy, Z, cmap='RdYlBu')                
                 plt.scatter(X[:, 0], X[:, 1], c=y.ravel(), cmap=plt.cm.Spectral)
-                plt.savefig('plots\Final de Entrenamiento.png')
+                plt.savefig('plots\Gráfico Final del Entrenamiento.png')
                 plt.pause(0.1)
                 plt.draw()
          
@@ -361,7 +377,7 @@ class SimpleNN:
         plt.xlim(0, mem[:, 0].max() + 5000)  # Establece los límites del eje x 
         plt.ylim(0, mem[:, 1].max() + 0.5)
         plt.title("Loss x Epoch")
-        plt.savefig('plots\Loss X Epoch.png')
+        plt.savefig('plots\Gráfico Loss X Epoch.png')
         plt.show()
 
     def predict(self, X):
@@ -372,14 +388,14 @@ class SimpleNN:
         _, _, _, y_hat = self.feedforward(X)
         return np.round(y_hat)
 
-    def feedforward_eval(self, X, W1, W2):
+    def feedforward_eval(self, X, W1, W2):   # Función forward para la evaluación del mejor modelo
         z1 = np.dot(X, W1) + self.b1
         a1 = self.sigmoid(z1)
         z2 = np.dot(a1, W2) + self.b2
         y_hat = self.sigmoid(z2)
         return y_hat
     
-    def predict_eval(self, X, W1, W2):
+    def predict_eval(self, X, W1, W2):   # Función predict para la evaluación del mejor modelo
         y_hat = self.feedforward_eval(X, W1, W2)
         return y_hat
     
@@ -401,7 +417,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 num_inputs = X_train.shape[1]
 num_hidden = 92
 num_outputs = 1
-epochs = 50000
+epochs = 1000000 #1000000
 lr = 0.02
 
 # Generación de la RN
@@ -409,25 +425,24 @@ nn = SimpleNN(num_inputs, num_hidden, num_outputs)
 
 #...........................................................
 #ENTRENAMIENTO DEL MODELO
-print("ETAPA DE ENTRENAMIENTO DEL MODELO:")
+print("\nETAPA DE ENTRENAMIENTO DEL MODELO:\n")
 
 # Entrenamiento de la RN
 nn.train(X_train, y_train, epochs=epochs, lr=lr, archivo = archivo_json)
 
-# Generación de Predicción
+# Generación de la predicción
 y_pred_train = nn.predict(X_train)
 #print(y_pred_train)
 
 # Métricas del entrenamiento
-
-print("Matriz de Confusión - Entrenamiento ->")
+print("\nMatriz de Confusión - Entrenamiento ->")
 vp, vn, fp, fn, m = matriz_confusion(np.round(y_pred_train), y_train)
 
 print(f"VN: {vn}   FP: {fp}")
 print(f"FN: {fn}   VP: {vp}")
 print(f"TOTAL: Instancias {m}")
 
-print("Métricas Entrenamiento ->")
+print("\nMétricas Entrenamiento ->")
 train_accuracy, train_precision, train_recall, train_f1score = calculo_metricas(vp, vn, fp, fn, m)
 
 print(f"Training Accuracy: {train_accuracy * 100:.2f}% de las predicciones son verdaderas")
@@ -440,10 +455,10 @@ curvas_roc_pr(y_pred_train, y_train, "Entrenamiento")
 
 #...........................................................
 #EVALUACIÓN DEL MODELO
-print("ETAPA DE EVALUACIÓN DEL MODELO:")
+print("\nETAPA DE EVALUACIÓN DEL MODELO:\n")
 
 # Extraer el mejor modelo
-epoch, W1, W2, loss = mejor_modelo(archivo_json)
+epoch, W1, W2, loss = encontrar_mejor_modelo(archivo_json)
 
 print(f"Mejor Modelo: Epoch {epoch}")
 
@@ -453,15 +468,14 @@ guardar_modelo(epoch, W1, W2, loss)
 y_pred_test = nn.predict_eval(X_test, W1, W2)
 
 # Métricas de la evaluación
-
-print("Matriz de Confusión - Evaluación ->")
+print("\nMatriz de Confusión - Evaluación ->")
 vp, vn, fp, fn, m = matriz_confusion(np.round(y_pred_test), y_test)
 
 print(f"VN: {vn}   FP: {fp}")
 print(f"FN: {fn}   VP: {vp}")
 print(f"TOTAL: Instancias {m}")
 
-print("Métricas Evaluación ->")
+print("\nMétricas Evaluación ->")
 test_accuracy, test_precision, test_recall, test_f1score = calculo_metricas(vp, vn, fp, fn, m)
 
 print(f"Test Accuracy: {test_accuracy * 100:.2f}% de las instancias evaluadas son verdaderas")

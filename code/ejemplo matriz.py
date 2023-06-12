@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.datasets import make_circles
 import json
+from pathlib import Path
 
 
 # Especificar la ruta y el nombre del archivo JSON donde se guardarán los datos
@@ -70,11 +71,23 @@ pesos = {
     'W2' : W2_lista
 }
 
+
+# Borrar archivo existente
+
+# Especifica la ruta y el nombre del archivo JSON que deseas borrar
+ruta_archivo = Path(archivo_json)
+
+# Verifica si el archivo existe antes de borrarlo
+if ruta_archivo.exists():
+    ruta_archivo.unlink()
+    print("Archivo borrado exitosamente.")
+else:
+    print("El archivo no existe.")
+
 # Guardar el diccionario en un archivo JSON
 with open(archivo_json, 'w') as archivo:
     json.dump(pesos, archivo)
     
-
 # Leer los datos del archivo JSON
 with open(archivo_json, 'r') as archivo:
     pesos_leidos = json.load(archivo)
