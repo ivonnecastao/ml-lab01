@@ -1,7 +1,8 @@
 import numpy as np
 from sklearn.datasets import make_circles
 import json
-from pathlib import Path
+#from pathlib import Path
+import os
 
 
 # Especificar la ruta y el nombre del archivo JSON donde se guardarán los datos
@@ -75,11 +76,11 @@ pesos = {
 # Borrar archivo existente
 
 # Especifica la ruta y el nombre del archivo JSON que deseas borrar
-ruta_archivo = Path(archivo_json)
+#ruta_archivo = Path(archivo_json)
 
 # Verifica si el archivo existe antes de borrarlo
-if ruta_archivo.exists():
-    ruta_archivo.unlink()
+if os.path.exists(archivo_json):
+    os.remove(archivo_json)
     print("Archivo borrado exitosamente.")
 else:
     print("El archivo no existe.")

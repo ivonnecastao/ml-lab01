@@ -3,7 +3,7 @@ from sklearn.datasets import make_circles
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import json
-from pathlib import Path
+import os
 
 #-------------------------------------------------------------------------------------------
 # FUNCIONES GENERALES
@@ -208,10 +208,8 @@ def guardar_modelo(epoch, W1, W2, loss):
         }
 
         # Borrar archivo existente
-        ruta_archivo = Path(archivo_modelo)
-
-        if ruta_archivo.exists():
-            ruta_archivo.unlink()
+        if os.path.exists(archivo_modelo):
+            os.remove(archivo_modelo)
         
         # Guardar el diccionario en un archivo JSON
         with open(archivo_modelo, 'w') as archivo:
@@ -235,10 +233,8 @@ class SimpleNN:
         #Inicializa el archivo en donde se guardarán los modelos por epoch, con los pesos iniciales.
         
         # Borrar archivo existente
-        ruta_archivo = Path(archivo_pesos)
-
-        if ruta_archivo.exists():
-            ruta_archivo.unlink()
+        if os.path.exists(archivo_pesos):
+            os.remove(archivo_pesos)
              
         # Convertir self.W1 y self.W2 en listas
         W1_lista = self.W1.tolist()
