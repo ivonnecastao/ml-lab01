@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../MLLab"
+		},
+		{
+			"path": "../Red_Neuronal_DVC"
+		},
+		{
+			"path": "../Machine-Learning"
+		}
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "C:\\Users\\ivonn\\anaconda3\\python.exe"
+	},
+	"extensions": {
+		"recommendations": [
+			"iterative.dvc"
+		]
+	}
+}

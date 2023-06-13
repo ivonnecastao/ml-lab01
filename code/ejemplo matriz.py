@@ -1,7 +1,8 @@
 import numpy as np
+import pylab as pl
 from sklearn.datasets import make_circles
+from mpl_toolkits.mplot3d import Axes3D
 import json
-#from pathlib import Path
 import os
 
 
@@ -72,11 +73,7 @@ pesos = {
     'W2' : W2_lista
 }
 
-
 # Borrar archivo existente
-
-# Especifica la ruta y el nombre del archivo JSON que deseas borrar
-#ruta_archivo = Path(archivo_json)
 
 # Verifica si el archivo existe antes de borrarlo
 if os.path.exists(archivo_json):
@@ -101,4 +98,33 @@ print(f"W1_archivo: {v1}")
 print(f"W1: {W1}")
 print(f"W2_archivo: {v2}")
 print(f"W2: {W2}")
+
+
+
+fig = pl.figure()
+ax = Axes3D(fig)
+xx = W1[0,]
+yy = W1[1,]
+xx = xx.ravel()
+yy = yy.ravel()
+
+print(f"XX:\n {xx}")
+print(f"Dim de XX: {xx.shape}")
+print(f"YY:\n {yy}")
+print(f"Dim de YY: {yy.shape}")
+
+xx, yy = np.meshgrid(xx, yy)
+
+Z = W2.ravel()
+Z = Z.reshape(-1,1)
+Z = np.hstack([Z, Z, Z, Z, Z])
+
+print(f"Z:\n {Z}")
+print(f"Dim de Z: {Z.shape}")
+
+ax.plot_surface(xx, yy, Z, rstride=1, cstride=1, cmap=pl.cm.hot)
+ax.contourf(xx, yy, Z, zdir='z', offset=-2, cmap=pl.cm.hot)
+ax.set_zlim(-2, 2)
+
+pl.show()
 
